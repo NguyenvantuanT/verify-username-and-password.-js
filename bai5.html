@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            margin: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class ="container">
+        <div id="boxform">
+            <h2>Đăng nhập</h2>
+            <input type="text" name="" placeholder="Nhập tên đăng nhập" id="user"><br>
+            <input type="password" name="" placeholder="Nhập mật khẩu" id="pass"><br>
+            <input type="password" name="" placeholder="Nhập lại mật khẩu" id="pass2"><br>
+            <button onclick="return checkform()">Đăng nhập</button>
+        </div>
+        <div id="showkq">
+            
+        </div>
+
+        <script>
+            function checkform() {
+                var user = document.getElementById("user");
+                var pass = document.getElementById("pass");
+                var pass2 = document.getElementById("pass2")
+                if(user.value != ""){
+                    if(user.value.length <= 8) {
+                        alert("vui lòng nhập tên hơn 8 kí tự ")
+                        user.focus();
+                        return false;
+                    }
+                }else{
+                    alert("Vui lòng nhập tên ");
+                    user.focus();
+                    return false;
+                }
+                if(pass.value != ""){
+                    if(pass.value.length < 8) {
+                        alert("vui lòng nhập mật khẩu hơn 8 kí tự ")
+                       pass.focus();
+                        return false;
+                    }
+                }else{
+                    alert("Vui lòng nhập mật khẩu ");
+                    pass.focus();
+                    return false;
+                }
+                if(pass2.value != ""){
+                    if(pass.value !=  pass2.value) {
+                        alert("Mật khẩu không trùng ")
+                        pass2.focus();
+                        return false;
+                    }
+                }else{
+                    alert("Vui lòng nhập lại mật khẩu ");
+                    pass2.focus();
+                    return false;
+                }
+
+                var kq = `  <h2>Đăng nhập thành công</h2>
+                            <p>Tên đăng nhập : <span>`+user.value+`</span></p>
+                            <p>Mật khẩu : <span>`+pass.value+`</span></p>`;
+                document.getElementById("showkq").innerHTML = kq ;
+
+            }
+        </script>
+    </div>
+</body>
+</html>
